@@ -1,46 +1,21 @@
-package Apartment.database;
+package Apartment.dbConnection;
 
-import Apartment.models.Guest;
-import Apartment.models.Register;
-import Apartment.models.Tenant;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import java.sql.*;
-import java.util.List;
-
-public class DbCode {
-    public static DbCode dbCode;
-    protected static Connection connection;
-    protected String url="jdbc:mysql://localhost:3306/apartment";
-    protected String user="root";
-    protected String pass="satheesh";
-    protected static PreparedStatement pst;
-    protected static ResultSet resultSet;
-    protected static Guest guest;
-    protected static Tenant tenant;
-    protected static Register register;
-    protected static List<Guest> guestDetails;
-    protected static List<Tenant> tenantDetails;
-    protected static List<Register> registerDetails;
-
-
-    public DbCode() {
-        try{
-            connection= DriverManager.getConnection(url, user, pass);
-        }catch (SQLException e){
-            System.out.println("Error: "+e);
-        }
-    }
-    public static DbCode getInstance(){
-        if(dbCode==null){
-            dbCode=new DbCode();
-        }
-        return dbCode;
-    }
+public class LoginDetails {
+    private static PreparedStatement pst;
+    private static ResultSet resultSet;
+     private Connection connection;
+    private DbCode Dbcode;
 
     public boolean isValidateCredential(String user, String pass) {
         boolean res=false;
         try{
             String q="select * from credentials where username=? and password=?";
+            connection= DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setString(1,user);
             pst.setString(2, pass);
@@ -60,6 +35,7 @@ public class DbCode {
     public boolean isValidateUser(String user) {
         try{
             String q="select * from credentials where username=?";
+            connection=Dbcode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setString(1,user);
             resultSet= pst.executeQuery();

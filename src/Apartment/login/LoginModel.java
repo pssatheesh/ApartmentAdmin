@@ -1,13 +1,16 @@
 package Apartment.login;
 
 import Apartment.MainMenu;
-import Apartment.database.DbCode;
+import Apartment.dbConnection.LoginDetails;
 import Apartment.guest.GuestView;
 import Apartment.util.Utility;
+
+
 
 public class LoginModel {
     private LoginView loginView;
     private MainMenu mainMenu=new MainMenu();
+    private LoginDetails loginDetails=new LoginDetails();
 
     public LoginModel(LoginView loginView){
         this.loginView=loginView;
@@ -26,14 +29,14 @@ public class LoginModel {
     }
 
     private boolean isValidateCredential(String user, String pass) {
-        if(DbCode.getInstance().isValidateCredential(user, pass)){
+        if(loginDetails.isValidateCredential(user, pass)){
             return true;
         }
         return false;
     }
 
     private boolean isValidateUser(String user){
-        if(DbCode.getInstance().isValidateUser(user)){
+        if(loginDetails.isValidateUser(user)){
             return true;
         }
         return false;

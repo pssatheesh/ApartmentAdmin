@@ -1,16 +1,24 @@
-package Apartment.database;
+package Apartment.dbConnection;
 
 import Apartment.models.Guest;
 
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuestConnection extends DbCode{
-    public static boolean addGuest(String vehicle, String block, String house, Date date, String time, String parking, String reason) {
+
+public class GuestConnection {
+    private static DbCode dbCode;
+    private static Connection connection;
+    private static PreparedStatement pst;
+    private static ResultSet resultSet;
+    private static Guest guest;
+    private static List<Guest> guestDetails;
+
+    public boolean addGuest(String vehicle, String block, String house, Date date, String time, String parking, String reason) {
         try{
             String q="insert into guestdetails (Vehicle_details,Block,House_NO,Indate,Intime,Parking_slot,Reason) values(?,?,?,?,?,?,?)";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setString(1,vehicle);
             pst.setString(2, block);
@@ -29,23 +37,25 @@ public class GuestConnection extends DbCode{
         return false;
     }
 
-    public static Guest searchGuest(String vehicle) {
+    public Guest searchGuest(String vehicle) {
         try{
             String q="select * from guestdetails where Vehicle_details=?";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setString(1,vehicle);
             resultSet=pst.executeQuery();
             if(resultSet.next()){
-               return gcreateObject();
+                return gcreateObject();
             }
         }catch (Exception e){
             System.out.println("Error: "+e);
         }
         return null;
     }
-    public static List<Guest> viewAllGuest() {
+    public List<Guest> viewAllGuest() {
         try{
             String q="select * from guestdetails";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             resultSet=pst.executeQuery();
             guestDetails=new ArrayList<>();
@@ -58,10 +68,11 @@ public class GuestConnection extends DbCode{
         return guestDetails;
     }
 
-    public static int updateGuestOut(String vehicle, Date date, String formatTime) {
+    public int updateGuestOut(String vehicle, Date date, String formatTime) {
         int n=0;
         try{
             String q="update guestdetails set Outdate=?, Outtime=? where Vehicle_details=?";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setDate(1,date);
             pst.setString(2,formatTime);
@@ -72,7 +83,7 @@ public class GuestConnection extends DbCode{
         }
         return n;
     }
-    private static Guest gcreateObject() throws Exception{
+    private Guest gcreateObject() throws Exception{
         int id=resultSet.getInt("S_No");
         String Vehicle_details=resultSet.getString("Vehicle_details");
         String block=resultSet.getString("Block");

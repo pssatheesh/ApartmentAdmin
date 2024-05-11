@@ -1,19 +1,25 @@
-package Apartment.database;
+package Apartment.dbConnection;
 
 import Apartment.models.Register;
 
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterConnection extends DbCode{
-    public static boolean addDetails(String vehicle, LocalDate date, String formatTime) {
+public class RegisterConnection {
+    private static Connection connection;
+    private static PreparedStatement pst;
+    private static ResultSet resultSet;
+    private static Register register;
+    private static List<Register> registerDetails;
+
+    public boolean addDetails(String vehicle, LocalDate date, String formatTime) {
         try{
             int regno = 0;
             String name="";
             String q1="select Register_No,Name from tenantdetails where Vehicle_details=?";
+            connection= DbCode.getConnection();
             pst=connection.prepareStatement(q1);
             pst.setString(1, vehicle);
             resultSet= pst.executeQuery();
@@ -23,6 +29,7 @@ public class RegisterConnection extends DbCode{
             }
 
             String q="insert into dailyregister(Register_No, Name, Vehicle_details, Outdate, Outtime) values(?,?,?,?,?)";
+            connection= DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setInt(1,regno);
             pst.setString(2, name);
@@ -39,9 +46,10 @@ public class RegisterConnection extends DbCode{
         return false;
     }
 
-    public static List<Register> viewRegistry() {
+    public List<Register> viewRegistry() {
         try{
             String q="select * from dailyregister";
+            connection= DbCode.getConnection();
             pst=connection.prepareStatement(q);
             resultSet=pst.executeQuery();
             registerDetails=new ArrayList<>();
@@ -54,9 +62,10 @@ public class RegisterConnection extends DbCode{
         return registerDetails;
     }
 
-    public static Register searchRegister(String vehicle) {
+    public Register searchRegister(String vehicle) {
         try{
             String q="select * from dailyregister where Vehicle_details=?";
+            connection= DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setString(1,vehicle);
             resultSet=pst.executeQuery();
@@ -69,10 +78,11 @@ public class RegisterConnection extends DbCode{
         return null;
     }
 
-    public static int updateIntime(String vehicle, Date date, String formatTime) {
+    public int updateIntime(String vehicle, Date date, String formatTime) {
         int n=0;
         try{
             String q="update dailyregister set Indate=?, Intime=? where Vehicle_details=?";
+            connection= DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setDate(1,date);
             pst.setString(2,formatTime);
@@ -84,7 +94,7 @@ public class RegisterConnection extends DbCode{
         return n;
     }
 
-    private static Register rcreateObject() throws SQLException {
+    private Register rcreateObject() throws SQLException {
         int s_No=resultSet.getInt("S_No");
         int regno=resultSet.getInt("Register_No");
         String name=resultSet.getString("Name");

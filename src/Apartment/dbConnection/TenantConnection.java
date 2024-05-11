@@ -1,19 +1,23 @@
-package Apartment.database;
+package Apartment.dbConnection;
 
 import Apartment.models.Tenant;
 import Apartment.util.Utility;
 
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TenantConnection extends DbCode {
-
-    public static boolean addTenant(int regno, String name, String block, String house, String address, String vehicle, Date date, String formatTime, String parkingSlot) {
+public class TenantConnection {
+    private static Connection connection;
+    private static PreparedStatement pst;
+    private static ResultSet resultSet;
+    private static Tenant tenant;
+    private static List<Tenant> tenantDetails;
+    public boolean addTenant(int regno, String name, String block, String house, String address, String vehicle, Date date, String formatTime, String parkingSlot) {
         try{
             String q="insert into tenantdetails (Register_No,Name,Block,House_NO, Address,Vehicle_details, Indate, Intime,Parking_slot) values(?,?,?,?,?,?,?,?,?)";
             pst=connection.prepareStatement(q);
+            connection=DbCode.getConnection();
             pst.setInt(1,regno);
             pst.setString(2, name);
             pst.setString(3, block);
@@ -32,9 +36,10 @@ public class TenantConnection extends DbCode {
         }
         return false;
     }
-    public static List<Tenant> viewAllTenant() {
+    public  List<Tenant> viewAllTenant() {
         try{
             String q="select * from tenantdetails";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             resultSet=pst.executeQuery();
             tenantDetails=new ArrayList<>();
@@ -46,14 +51,15 @@ public class TenantConnection extends DbCode {
         }
         return tenantDetails;
     }
-    public static Tenant searchTenant(int regno) {
+    public Tenant searchTenant(int regno) {
         try{
             String q="select * from tenantdetails where Register_No=?";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setInt(1,regno);
             resultSet=pst.executeQuery();
             if(resultSet.next()){
-              return tcreateObject();
+                return tcreateObject();
             }
         }catch (Exception e){
             System.out.println("Error: "+e);
@@ -61,9 +67,10 @@ public class TenantConnection extends DbCode {
         return null;
     }
 
-    public static void updateTenant(int regno, String column, String data) {
+    public void updateTenant(int regno, String column, String data) {
         try{
             String q="update tenantdetails set "+column+" =? where register_no=?";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setString(1,data);
             pst.setInt(2,regno);
@@ -73,11 +80,12 @@ public class TenantConnection extends DbCode {
         }
     }
 
-    public static int deleteTenant(int regno, String reason) {
+    public int deleteTenant(int regno, String reason) {
         int n=0;
         try{
             if(insertToDeletedData(regno, reason)){
                 String q="delete from tenantdetails where Register_No=?";
+                connection=DbCode.getConnection();
                 pst=connection.prepareStatement(q);
                 pst.setInt(1, regno);
                 n=pst.executeUpdate();
@@ -91,10 +99,11 @@ public class TenantConnection extends DbCode {
         return n;
     }
 
-    private static boolean insertToDeletedData(int regno, String reason) {
+    private boolean insertToDeletedData(int regno, String reason) {
         try{
             tenant=searchTenant(regno);
             String q="insert into deleteddetails (Register_No,Name,Block,House_NO, Address,Vehicle_details, Indate, Intime,Outdate, Outtime,Parking_slot,Reason) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setInt(1,regno);
             pst.setString(2, tenant.getName());
@@ -120,7 +129,7 @@ public class TenantConnection extends DbCode {
 
     }
 
-    private static Tenant tcreateObject() throws SQLException {
+    private Tenant tcreateObject() throws SQLException {
         int id=resultSet.getInt("S_No");
         int regno=resultSet.getInt("Register_No");
         String name=resultSet.getString("Name");

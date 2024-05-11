@@ -1,7 +1,7 @@
 package Apartment.dailyRegister;
 
-import Apartment.database.RegisterConnection;
-import Apartment.login.LoginView;
+
+import Apartment.dbConnection.RegisterConnection;
 import Apartment.models.Register;
 import Apartment.util.Utility;
 
@@ -13,6 +13,7 @@ import java.util.List;
 
 public class RegisterModel {
     private static RegisterView registerView;
+    private static RegisterConnection registerconnect=new RegisterConnection();
     public RegisterModel(RegisterView registerView){
         this.registerView=registerView;
     }
@@ -22,7 +23,7 @@ public class RegisterModel {
         LocalTime time=LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
         String formatTime = time.format(formatter);
-        if(RegisterConnection.addDetails(vehicle, date, formatTime)){
+        if(registerconnect.addDetails(vehicle, date, formatTime)){
             Utility.showAlert("Added sucessfully");
         }else{
             Utility.showAlert("Try Again");
@@ -30,11 +31,11 @@ public class RegisterModel {
     }
 
     public List<Register> viewRegistry() {
-        return RegisterConnection.viewRegistry();
+        return registerconnect.viewRegistry();
     }
 
     public Register searchRegister(String vehicle) {
-        return RegisterConnection.searchRegister(vehicle);
+        return registerconnect.searchRegister(vehicle);
     }
 
     public void updateIntime(String vehicle) {
@@ -42,7 +43,7 @@ public class RegisterModel {
         LocalTime time=LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
         String formatTime = time.format(formatter);
-        int res=RegisterConnection.updateIntime(vehicle, Date.valueOf(date), formatTime);
+        int res=registerconnect.updateIntime(vehicle, Date.valueOf(date), formatTime);
         if(res>=1){
             Utility.showAlert("Intime updateded sucessfully");
         }else

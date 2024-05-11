@@ -4,37 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb4c4669-0a7b-442e-a745-eaa23805c872" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ApartmentAdmin.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/ApartmentApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/dailyRegister/RegisterModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/dailyRegister/RegisterView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/database/DbCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/database/DeletedConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/database/GuestConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/database/RegisterConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/database/TenantConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/deletedRecords/DeletedRecModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/deletedRecords/DeletedRecView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/guest/GuestModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/guest/GuestView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/login/LoginModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/login/LoginView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/models/DeletedRecords.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/models/Guest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/models/Register.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/models/Tenant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/tenant/TenantModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/tenant/TenantView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Apartment/util/Utility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ElectionAdding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="eb4c4669-0a7b-442e-a745-eaa23805c872" name="Changes" comment="Created ApartmentAdmin console application">
+      <change afterPath="$PROJECT_DIR$/src/Apartment/dbConnection/DbCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Apartment/dbConnection/DeletedConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Apartment/dbConnection/GuestConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Apartment/dbConnection/LoginDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Apartment/dbConnection/RegisterConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Apartment/dbConnection/TenantConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/dailyRegister/RegisterModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Apartment/dailyRegister/RegisterModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/database/DbCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/database/DeletedConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/database/GuestConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/database/RegisterConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/database/TenantConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/deletedRecords/DeletedRecModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Apartment/deletedRecords/DeletedRecModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/guest/GuestModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Apartment/guest/GuestModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/login/LoginModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Apartment/login/LoginModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Apartment/tenant/TenantModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Apartment/tenant/TenantModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,10 +52,11 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Lucky Dell/IdeaProjects/ApartmentAdmin",
+    "last_opened_file_path": "C:/Users/Lucky Dell/IdeaProjects/Consoleapplication",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -80,6 +68,37 @@
       <option name="presentableId" value="Default" />
       <updated>1714191715390</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created ApartmentAdmin console application">
+      <option name="closed" value="true" />
+      <created>1714906852840</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714906852840</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created ApartmentAdmin console application">
+      <option name="closed" value="true" />
+      <created>1714906928395</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714906928395</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created ApartmentAdmin console application" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created ApartmentAdmin console application" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

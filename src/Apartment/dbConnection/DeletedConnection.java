@@ -1,20 +1,23 @@
-package Apartment.database;
+package Apartment.dbConnection;
 
 import Apartment.models.DeletedRecords;
-import Apartment.models.Tenant;
 
-import java.sql.Date;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeletedConnection extends DbCode{
+public class DeletedConnection {
+    private static Connection connection;
+    private static PreparedStatement pst;
+    private static ResultSet resultSet;
     private static DeletedRecords deletedRecords;
     private static List<DeletedRecords> deletedDetails;
 
-    public static List<DeletedRecords> viewAllRecords() {
+
+    public List<DeletedRecords> viewAllRecords() {
         try{
             String q="select * from deleteddetails";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             resultSet=pst.executeQuery();
             deletedDetails=new ArrayList<>();
@@ -26,7 +29,7 @@ public class DeletedConnection extends DbCode{
         }
         return deletedDetails;
     }
-    private static DeletedRecords delcreateObject() throws SQLException {
+    private DeletedRecords delcreateObject() throws SQLException {
         int id=resultSet.getInt("S_No");
         int regno=resultSet.getInt("Register_No");
         String name=resultSet.getString("Name");
@@ -44,9 +47,10 @@ public class DeletedConnection extends DbCode{
         return deletedRecords;
     }
 
-    public static DeletedRecords searchRecords(int regno) {
+    public DeletedRecords searchRecords(int regno) {
         try{
             String q="select * from deleteddetails where Register_No=?";
+            connection=DbCode.getConnection();
             pst=connection.prepareStatement(q);
             pst.setInt(1,regno);
             resultSet=pst.executeQuery();

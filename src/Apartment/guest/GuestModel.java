@@ -1,6 +1,7 @@
 package Apartment.guest;
 
-import Apartment.database.GuestConnection;
+
+import Apartment.dbConnection.GuestConnection;
 import Apartment.login.LoginView;
 import Apartment.models.Guest;
 import Apartment.util.Utility;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class GuestModel {
     private GuestView guestView;
+    private GuestConnection guestConnect=new GuestConnection();
     public GuestModel (GuestView guestView){
         this.guestView=guestView;
     }
@@ -22,7 +24,7 @@ public class GuestModel {
         LocalTime time=LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
         String formatTime = time.format(formatter);
-        if(GuestConnection.addGuest(vehicle, block,house, Date.valueOf(date), formatTime, parking_slot, reason)){
+        if(guestConnect.addGuest(vehicle, block,house, Date.valueOf(date), formatTime, parking_slot, reason)){
             Utility.showAlert("Guest Added sucessfully");
         }else{
             Utility.showAlert("Try Again");
@@ -31,10 +33,10 @@ public class GuestModel {
     }
 
     public Guest searchGuest(String vehicle) {
-        return GuestConnection.searchGuest(vehicle);
+        return guestConnect.searchGuest(vehicle);
     }
     public List<Guest> viewAllGuest() {
-        return GuestConnection.viewAllGuest();
+        return guestConnect.viewAllGuest();
     }
 
     public void updateOut(String vehicle) {
@@ -42,7 +44,7 @@ public class GuestModel {
         LocalTime time=LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
         String formatTime = time.format(formatter);
-        int res=GuestConnection.updateGuestOut(vehicle, Date.valueOf(date), formatTime);
+        int res=guestConnect.updateGuestOut(vehicle, Date.valueOf(date), formatTime);
         if(res>=1){
             Utility.showAlert("Guest Outtime updateded sucessfully");
         }else

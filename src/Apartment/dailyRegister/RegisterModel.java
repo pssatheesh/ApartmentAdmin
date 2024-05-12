@@ -1,7 +1,7 @@
 package Apartment.dailyRegister;
 
 
-import Apartment.dbConnection.RegisterConnection;
+import Apartment.datas.RegisterConnection;
 import Apartment.models.Register;
 import Apartment.util.Utility;
 

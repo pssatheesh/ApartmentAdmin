@@ -2,27 +2,21 @@ package Apartment.models;
 
 import java.util.Date;
 
-public class Tenant {
-    private int sNo;
-    private int registerNo;
-    private String name;
-    private String block;
-    private String houseNo;
-    private String address;
-    private String vehicleDetails;
-    private Date inDate;
-    private String inTime;
-    private Date outDate;
-    private String outTime;
-    private String parkingSlot;
+public class BaseModel {
+        private int sNo;
+        private String block;
+        private String houseNo;
+        private String vehicleDetails;
+        private Date inDate;
+        private String inTime;
+        private Date outDate;
+        private String outTime;
+        private String parkingSlot;
 
-    public Tenant(int sNo, int registerNo, String name, String block, String houseNo, String address, String vehicleDetails, Date inDate, String inTime, Date outDate, String outTime, String parkingSlot) {
+    public BaseModel(int sNo, String block, String houseNo, String address, String vehicleDetails, Date inDate, String inTime, Date outDate, String outTime, String parkingSlot) {
         this.sNo = sNo;
-        this.registerNo = registerNo;
-        this.name = name;
         this.block = block;
         this.houseNo = houseNo;
-        this.address = address;
         this.vehicleDetails = vehicleDetails;
         this.inDate = inDate;
         this.inTime = inTime;
@@ -31,28 +25,14 @@ public class Tenant {
         this.parkingSlot = parkingSlot;
     }
 
+
+
     public int getsNo() {
         return sNo;
     }
 
     public void setsNo(int sNo) {
         this.sNo = sNo;
-    }
-
-    public int getRegisterNo() {
-        return registerNo;
-    }
-
-    public void setRegisterNo(int registerNo) {
-        this.registerNo = registerNo;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getBlock() {
@@ -69,14 +49,6 @@ public class Tenant {
 
     public void setHouseNo(String houseNo) {
         this.houseNo = houseNo;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getVehicleDetails() {
@@ -129,17 +101,14 @@ public class Tenant {
 
     @Override
     public String toString() {
-        return sNo + " |\t " +
-                registerNo + " |\t" +
-                name + " |\t" +
-                block + " |\t" +
-                houseNo + " |\t" +
-                address + " |\t" +
-                vehicleDetails + " |\t" +
-                inDate + " |\t " +
-                inTime + " |\t " +
-                outDate + " |\t " +
-                outTime + " |\t " +
-                parkingSlot + " |\t ";
+        return sNo +" | \t"+
+                block +" | \t"+
+                 houseNo+" | \t"+
+                 vehicleDetails +" | \t"+
+                 inDate +" | \t"+
+                 inTime +" | \t"+
+                 outDate +" | \t"+
+                outTime +" | \t"+
+                 parkingSlot +" | \t";
     }
 }

@@ -1,7 +1,7 @@
 package Apartment.deletedRecords;
 
 
-import Apartment.dbConnection.DeletedConnection;
+import Apartment.datas.DeletedConnection;
 import Apartment.models.DeletedRecords;
 
 import java.util.List;

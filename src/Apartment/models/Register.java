@@ -3,48 +3,48 @@ package Apartment.models;
 import java.util.Date;
 
 public class Register {
-    private int s_No;
-    private int regno;
-    private String Name;
+    private int sNo;
+    private int regNo;
+    private String name;
     private String vehicle;
-    private Date outdate;
-    private String outtime;
-    private Date indate;
-    private String intime;
+    private Date outDate;
+    private String outTime;
+    private Date inDate;
+    private String inTime;
 
-    public Register(int s_No, int regno, String name, String vehicle, Date outdate, String outtime, Date indate, String intime) {
-        this.s_No = s_No;
-        this.regno = regno;
-        Name = name;
+    public Register(int sNo, int regNo, String name, String vehicle, Date outDate, String outTime, Date inDate, String inTime) {
+        this.sNo = sNo;
+        this.regNo = regNo;
+        this.name = name;
         this.vehicle = vehicle;
-        this.outdate = outdate;
-        this.outtime = outtime;
-        this.indate = indate;
-        this.intime = intime;
+        this.outDate = outDate;
+        this.outTime = outTime;
+        this.inDate = inDate;
+        this.inTime = inTime;
     }
 
-    public int getS_No() {
-        return s_No;
+    public int getsNo() {
+        return sNo;
     }
 
-    public void setS_No(int s_No) {
-        this.s_No = s_No;
+    public void setsNo(int sNo) {
+        this.sNo = sNo;
     }
 
-    public int getRegno() {
-        return regno;
+    public int getRegNo() {
+        return regNo;
     }
 
-    public void setRegno(int regno) {
-        this.regno = regno;
+    public void setRegNo(int regNo) {
+        this.regNo = regNo;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getVehicle() {
@@ -55,47 +55,47 @@ public class Register {
         this.vehicle = vehicle;
     }
 
-    public Date getOutdate() {
-        return outdate;
+    public Date getOutDate() {
+        return outDate;
     }
 
-    public void setOutdate(Date outdate) {
-        this.outdate = outdate;
+    public void setOutDate(Date outDate) {
+        this.outDate = outDate;
     }
 
-    public String getOuttime() {
-        return outtime;
+    public String getOutTime() {
+        return outTime;
     }
 
-    public void setOuttime(String outtime) {
-        this.outtime = outtime;
+    public void setOutTime(String outTime) {
+        this.outTime = outTime;
     }
 
-    public Date getIndate() {
-        return indate;
+    public Date getInDate() {
+        return inDate;
     }
 
-    public void setIndate(Date indate) {
-        this.indate = indate;
+    public void setInDate(Date inDate) {
+        this.inDate = inDate;
     }
 
-    public String getIntime() {
-        return intime;
+    public String getInTime() {
+        return inTime;
     }
 
-    public void setIntime(String intime) {
-        this.intime = intime;
+    public void setInTime(String inTime) {
+        this.inTime = inTime;
     }
 
     @Override
     public String toString() {
-        return "| " + s_No + "  |\t" +
-                regno + "  |\t" +
-                Name + "  |\t" +
+        return "| " + sNo + "  |\t" +
+                regNo + "  |\t" +
+                name + "  |\t" +
                 vehicle + "  |\t" +
-                outdate + "  |\t" +
-                outtime + "  |\t" +
-                indate + "  |\t" +
-                intime + "  |\t";
+                outDate + "  |\t" +
+                outTime + "  |\t" +
+                inDate + "  |\t" +
+                inTime + "  |\t";
     }
 }

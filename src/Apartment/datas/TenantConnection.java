@@ -1,4 +1,4 @@
-package Apartment.dbConnection;
+package Apartment.datas;
 
 import Apartment.models.Tenant;
 import Apartment.util.Utility;
@@ -16,8 +16,8 @@ public class TenantConnection {
     public boolean addTenant(int regno, String name, String block, String house, String address, String vehicle, Date date, String formatTime, String parkingSlot) {
         try{
             String q="insert into tenantdetails (Register_No,Name,Block,House_NO, Address,Vehicle_details, Indate, Intime,Parking_slot) values(?,?,?,?,?,?,?,?,?)";
-            pst=connection.prepareStatement(q);
             connection=DbCode.getConnection();
+            pst=connection.prepareStatement(q);
             pst.setInt(1,regno);
             pst.setString(2, name);
             pst.setString(3, block);
@@ -32,7 +32,7 @@ public class TenantConnection {
                 return true;
             }
         }catch (SQLException e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return false;
     }
@@ -47,7 +47,7 @@ public class TenantConnection {
                 tenantDetails.add(tcreateObject());
             }
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return tenantDetails;
     }
@@ -62,7 +62,7 @@ public class TenantConnection {
                 return tcreateObject();
             }
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return null;
     }
@@ -76,7 +76,7 @@ public class TenantConnection {
             pst.setInt(2,regno);
             pst.executeUpdate();
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
     }
 
@@ -94,7 +94,7 @@ public class TenantConnection {
                 throw new RuntimeException("Data not inserted into deleted table");
             }
         }catch (Exception e){
-            e.printStackTrace();
+            Utility.showAlert( "Error: "+e);
         }
         return n;
     }
@@ -108,14 +108,14 @@ public class TenantConnection {
             pst.setInt(1,regno);
             pst.setString(2, tenant.getName());
             pst.setString(3, tenant.getBlock());
-            pst.setString(4, tenant.getHouse_No());
+            pst.setString(4, tenant.getHouseNo());
             pst.setString(5, tenant.getAddress());
-            pst.setString(6, tenant.getVehicle_details());
-            pst.setDate(7, (Date)tenant.getIndate());
-            pst.setString(8, tenant.getIntime());
-            pst.setDate(9, (Date)tenant.getOutdate());
-            pst.setString(10, tenant.getOuttime());
-            pst.setString(11, tenant.getParking_slot());
+            pst.setString(6, tenant.getVehicleDetails());
+            pst.setDate(7, (Date)tenant.getInDate());
+            pst.setString(8, tenant.getInTime());
+            pst.setDate(9, (Date)tenant.getOutDate());
+            pst.setString(10, tenant.getOutTime());
+            pst.setString(11, tenant.getParkingSlot());
             pst.setString(12, reason);
 
             int c= pst.executeUpdate();
@@ -123,10 +123,26 @@ public class TenantConnection {
                 return true;
             }
         }catch (SQLException e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return false;
 
+    }
+
+    public int updateTenantOut(int regno, Date date, String formatTime) {
+        int n=0;
+        try{
+            String q="update tenantdetails set Outdate=?, Outtime=? where Register_No=?";
+            connection=DbCode.getConnection();
+            pst=connection.prepareStatement(q);
+            pst.setDate(1,date);
+            pst.setString(2,formatTime);
+            pst.setInt(3,regno);
+            n=pst.executeUpdate();
+        }catch (Exception e){
+            Utility.showAlert( "Error: "+e);
+        }
+        return n;
     }
 
     private Tenant tcreateObject() throws SQLException {
@@ -145,4 +161,6 @@ public class TenantConnection {
         tenant=new Tenant(id,regno,name,block,house,address,Vehicle_details,indate,intime,outdate,outtime,parking);
         return tenant;
     }
+
+
 }

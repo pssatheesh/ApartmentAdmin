@@ -1,8 +1,7 @@
 package Apartment.login;
 
 import Apartment.MainMenu;
-import Apartment.dbConnection.LoginDetails;
-import Apartment.guest.GuestView;
+import Apartment.datas.LoginDetails;
 import Apartment.util.Utility;
 
 

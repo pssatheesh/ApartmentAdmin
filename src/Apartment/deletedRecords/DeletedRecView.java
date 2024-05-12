@@ -18,7 +18,7 @@ public class DeletedRecView {
     public void init() {
         scanner=new Scanner(System.in);
         while(true){
-            System.out.println("\1.View Record\n2.Search Record \n3.Back to main menu\n4.Logout");
+            System.out.println("\n1.View Record\n2.Search Record \n3.Back to main menu\n4.Logout");
             System.out.println("Enter your option:");
             int choice=scanner.nextInt();
             switch (choice){

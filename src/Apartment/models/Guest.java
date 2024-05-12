@@ -3,119 +3,133 @@ package Apartment.models;
 import java.util.Date;
 
 public class Guest {
-    private int id;
-    private String Vehicle_details;
-    private String Block;
-    private String House_No;
-    private String Parking_Slot;
-    private String Reason;
-    private Date Indate;
-    private String Intime;
-    private Date Outdate;
-    private String Outtime;
+    private int sNo;
+    private String vehicleDetails;
+    private String block;
+    private String houseNo;
+    private Date inDate;
+    private String inTime;
+    private Date outDate;
+    private String outTime;
+    private String parkingSlot;
 
-    public Guest(int id, String vehicle_details, String block, String house_No, Date indate, String intime, Date outdate, String outtime, String parking_Slot, String reason) {
-        this.id = id;
-        Vehicle_details = vehicle_details;
-        Block = block;
-        House_No = house_No;
-        Parking_Slot = parking_Slot;
-        Reason = reason;
-        Indate = indate;
-        Intime = intime;
-        Outdate = outdate;
-        Outtime = outtime;
+    private String reason;
+
+
+    public Guest(String vehicleDetails, String block, String houseNo, Date inDate, String inTime, String parkingSlot, String reason) {
+        this.vehicleDetails = vehicleDetails;
+        this.block = block;
+        this.houseNo = houseNo;
+        this.inDate = inDate;
+        this.inTime = inTime;
+        this.parkingSlot = parkingSlot;
+        this.reason = reason;
     }
 
-    public int getId() {
-        return id;
+    public Guest(int sNo, String vehicleDetails, String block, String houseNo, Date inDate, String inTime, Date outDate, String outTime, String parkingSlot, String reason) {
+        this.sNo = sNo;
+        this.vehicleDetails = vehicleDetails;
+        this.block = block;
+        this.houseNo = houseNo;
+        this.inDate = inDate;
+        this.inTime = inTime;
+        this.outDate = outDate;
+        this.outTime = outTime;
+        this.parkingSlot = parkingSlot;
+        this.reason = reason;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getsNo() {
+        return sNo;
     }
 
-    public String getVehicle_details() {
-        return Vehicle_details;
+    public void setsNo(int sNo) {
+        this.sNo = sNo;
     }
 
-    public void setVehicle_details(String vehicle_details) {
-        Vehicle_details = vehicle_details;
+    public String getVehicleDetails() {
+        return vehicleDetails;
+    }
+
+    public void setVehicleDetails(String vehicleDetails) {
+        this.vehicleDetails = vehicleDetails;
     }
 
     public String getBlock() {
-        return Block;
+        return block;
     }
 
     public void setBlock(String block) {
-        Block = block;
+        this.block = block;
     }
 
-    public String getHouse_No() {
-        return House_No;
+    public String getHouseNo() {
+        return houseNo;
     }
 
-    public void setHouse_No(String house_No) {
-        House_No = house_No;
+    public void setHouseNo(String houseNo) {
+        this.houseNo = houseNo;
     }
 
-    public String getParking_Slot() {
-        return Parking_Slot;
+    public Date getInDate() {
+        return inDate;
     }
 
-    public void setParking_Slot(String parking_Slot) {
-        Parking_Slot = parking_Slot;
+    public void setInDate(Date inDate) {
+        this.inDate = inDate;
+    }
+
+    public String getInTime() {
+        return inTime;
+    }
+
+    public void setInTime(String inTime) {
+        this.inTime = inTime;
+    }
+
+    public Date getOutDate() {
+        return outDate;
+    }
+
+    public void setOutDate(Date outDate) {
+        this.outDate = outDate;
+    }
+
+    public String getOutTime() {
+        return outTime;
+    }
+
+    public void setOutTime(String outTime) {
+        this.outTime = outTime;
+    }
+
+    public String getParkingSlot() {
+        return parkingSlot;
+    }
+
+    public void setParkingSlot(String parkingSlot) {
+        this.parkingSlot = parkingSlot;
     }
 
     public String getReason() {
-        return Reason;
+        return reason;
     }
 
     public void setReason(String reason) {
-        Reason = reason;
-    }
-
-    public Date getIndate() {
-        return Indate;
-    }
-
-    public void setIndate(Date indate) {
-        Indate = indate;
-    }
-
-    public String getIntime() {
-        return Intime;
-    }
-
-    public void setIntime(String intime) {
-        Intime = intime;
-    }
-
-    public Date getOutdate() {
-        return Outdate;
-    }
-
-    public void setOutdate(Date outdate) {
-        Outdate = outdate;
-    }
-
-    public String getOuttime() {
-        return Outtime;
-    }
-
-    public void setOuttime(String outtime) {
-        Outtime = outtime;
+        this.reason = reason;
     }
 
     @Override
     public String toString() {
-        return "| " + id + "  |\t" + Vehicle_details + "  |\t" + Block + "  |\t" +
-                House_No + " |\t" +
-                Indate + "   |\t" +
-                Intime + "  |\t" +
-                Outdate + "  |\t" +
-                Outtime + " |\t" +
-                Parking_Slot + "     |\t" +
-                Reason + " \t| ";
+        return sNo + " | \t" +
+                vehicleDetails + " | \t" +
+                block + " | \t" +
+                houseNo + " | \t" +
+                inDate + " | \t" +
+                inTime + " | \t" +
+                outDate + " | \t" +
+                outTime + " | \t" +
+                parkingSlot + " | \t" +
+                reason + " | \t";
     }
 }

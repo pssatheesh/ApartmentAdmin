@@ -1,6 +1,7 @@
-package Apartment.dbConnection;
+package Apartment.datas;
 
 import Apartment.models.Register;
+import Apartment.util.Utility;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -41,7 +42,7 @@ public class RegisterConnection {
                 return true;
             }
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return false;
     }
@@ -57,7 +58,7 @@ public class RegisterConnection {
                 registerDetails.add(rcreateObject());
             }
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return registerDetails;
     }
@@ -73,7 +74,7 @@ public class RegisterConnection {
                 return rcreateObject();
             }
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return null;
     }
@@ -89,7 +90,7 @@ public class RegisterConnection {
             pst.setString(3,vehicle);
             n=pst.executeUpdate();
         }catch (Exception e){
-            System.out.println("Error: "+e);
+            Utility.showAlert( "Error: "+e);
         }
         return n;
     }

@@ -1,11 +1,11 @@
-package Apartment.dbConnection;
+package Apartment.datas;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DbCode {
-    static Connection connection=null;
+    private static Connection connection=null;
     private DbCode(){ }
     public static Connection getConnection() throws SQLException {
         if(connection==null){

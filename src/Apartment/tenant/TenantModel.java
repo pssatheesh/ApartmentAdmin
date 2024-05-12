@@ -1,6 +1,6 @@
 package Apartment.tenant;
 
-import Apartment.dbConnection.TenantConnection;
+import Apartment.datas.TenantConnection;
 import Apartment.models.Tenant;
 import Apartment.util.Utility;
 
@@ -44,5 +44,17 @@ public class TenantModel {
 
     public void update(int regno, String column, String data) {
         tenantConnect.updateTenant(regno, column, data);
+    }
+
+    public void updateOut(int regno) {
+        LocalDate date= LocalDate.now();
+        LocalTime time=LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        String formatTime = time.format(formatter);
+        int res=tenantConnect.updateTenantOut(regno, Date.valueOf(date), formatTime);
+        if(res>=1){
+            Utility.showAlert("Tenant Outtime updateded sucessfully");
+        }else
+            Utility.showAlert("Try Again");
     }
 }

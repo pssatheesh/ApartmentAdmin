@@ -1,4 +1,6 @@
-package Apartment.dbConnection;
+package Apartment.datas;
+
+import Apartment.util.Utility;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,8 +28,7 @@ public class LoginDetails {
                 }
             }
         }catch (SQLException e){
-            System.out.println("Error: "+e);
-            e.printStackTrace();
+            Utility.showAlert( "Error: "+e);
         }
         return res;
     }

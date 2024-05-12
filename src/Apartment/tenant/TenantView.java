@@ -20,7 +20,7 @@ public class TenantView {
     public void start(){
         Scanner scanner=new Scanner(System.in);
         while(true){
-            System.out.println("\n1.Add Tenant\n2.View Tenant\n3.Search Tenant \n4.Update Tenant details\n5.Delete Tenant details \n6.Back to main menu\n7.Logout");
+            System.out.println("\n1.Add Tenant\n2.View Tenant\n3.Search Tenant \n4.Update Tenant details\n5.Delete Tenant details\n6.Update Outtime \n7.Back to main menu\n8.Logout");
             System.out.println("Enter your option:");
             int choice=scanner.nextInt();
             switch (choice){
@@ -42,10 +42,14 @@ public class TenantView {
                     deleteTenant();
                     break;
                 case 6:
+                    //Update Outtime
+                    updateTenantOuttime();
+                    break;
+                case 7:
                     MainMenu mainMenu=new MainMenu();
                     mainMenu.init();
                     break;
-                case 7:
+                case 8:
                     System.out.println("Logout Successfully");
                     System.exit(0);
                 default:
@@ -54,6 +58,13 @@ public class TenantView {
                     break;
             }
         }
+    }
+
+    private void updateTenantOuttime() {
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("Enter the Register Number");
+        int regno=scanner.nextInt();
+        tenantModel.updateOut(regno);
     }
 
     private void updateTenant() {

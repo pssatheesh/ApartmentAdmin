@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class MainMenu {
     private static MainMenu mainMenu;
+    private Scanner scanner=new Scanner(System.in);
      public MainMenu getInstance(){
          if(mainMenu==null){
              mainMenu=new MainMenu();
@@ -17,7 +18,6 @@ public class MainMenu {
          return mainMenu;
      }
      public void init(){
-         Scanner scanner=new Scanner(System.in);
          System.out.println("Main Menu");
          while(true){
              System.out.println("1.Daily Entry\n2.Tenant\n3.Guest \n4.View Deleted Records\n5.Logout \n6.Exit");
@@ -55,7 +55,6 @@ public class MainMenu {
          }
      }
     public void submenu(){
-        Scanner scanner=new Scanner(System.in);
         System.out.println("1.Login\n2.Exit");
         System.out.println("Enter your choice");
         int choice=scanner.nextInt();
